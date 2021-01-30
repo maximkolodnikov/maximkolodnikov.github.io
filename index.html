@@ -6,42 +6,36 @@
     <title>Document</title>
 
     <style>
-        form {
-            margin-left: 25%;
-            margin-right:25%;
-            width: 50%;
+        .main {
+            display:block;
+            margin:auto;
+            position: relative;
+            z-index: 999;
         }
     </style>
 </head>
 <body>
-    <form class="control">
-        <input type="submit" value="Реквестировать поздравления">
-    </form>
-
-    <img src="images/0.jpg">
+    <img class="main" src="images/0.jpg">
 
     <script>
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
         }
 
-
-        var visible = 0;
-
-        document.querySelector("form").addEventListener("submit", function(e) {
-            e.preventDefault();
-
+        const getImage = () => {
             var fullWidth = window.innerWidth;
             var fullHeight = window.innerHeight;
 
             var elem = document.createElement("img");
-            elem.src = `images/${getRandomInt(3)}.jpg`;
+            elem.src = `images/${getRandomInt(14)}.jpg`;
             elem.style.position = "absolute";
             elem.style.left = Math.round(Math.random() * fullWidth) + "px";
             elem.style.top = Math.round(Math.random() * fullHeight) + "px";
             document.body.appendChild(elem);
+        }
+        let timerId = setInterval(getImage, 2000)
 
-        });
+        
     </script>
 </body>
 </html>
